@@ -194,6 +194,34 @@ endsnippet
 
 # generic snippets #############################################################
 
+snippet () "paren group" iA
+(${1:${VISUAL}})
+endsnippet
+
+snippet [] "bracket group" iA
+[${1:${VISUAL}}]
+endsnippet
+
+snippet {} "brace group" iA
+{${1:${VISUAL}}}
+endsnippet
+
+snippet <> "angle bracket group" iA
+<${1:${VISUAL}}>
+endsnippet
+
+snippet "" "double quote group" iA
+"${1:${VISUAL}}"
+endsnippet
+
+snippet '' "single quote group" iA
+'${1:${VISUAL}}'
+endsnippet
+
+snippet `` "back tick group" iA
+\`${1:${VISUAL}}\`
+endsnippet
+
 global !p
 def format_comment_break(comment):
     LINE_WIDTH=80
@@ -237,8 +265,8 @@ snippet BREAK "comment page break" !b
 ${1:<COMMENT>}`!p snip.rv = format_comment_break(t[1])`
 endsnippet
 
-snippet "(.*)((NOTE)|(IMPORTANT)|(TODO)|(BUG)|(XXX))" "important entry" r!b
-`!p snip.rv = match.group(1) + match.group(2)`(${1:`echo $USER`}): ${2:MESSAGE}
+snippet "([^\w]|^)((NOTE)|(IMPORTANT)|(TODO)|(BUG)|(XXX))" "important entry" rw
+`!p snip.rv = match.group(0)`(${1:`echo $USER`}): ${2:MESSAGE}
 endsnippet
 
 snippet LOREM "Lorem Ipsum - 50 Words" b
