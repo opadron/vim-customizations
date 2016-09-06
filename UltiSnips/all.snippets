@@ -149,6 +149,14 @@ ${1:<HEADER>}(${2:<ARGUMENTS>}) {
 `!p snip.rv = "%s(%s);" % (get_prototype_head(t[1]), get_prototype_args(t[2]))`
 endsnippet
 
+snippet STRUCT "C-style struct with typedef" !b
+struct ${1:NAME};
+typedef struct $1 $1;
+struct $1 {
+    $2
+};
+endsnippet
+
 snippet IGUARD "C-style multiple inclusion guard" !b
 #ifndef __${1:<HEADER NAME>}_H
 #define __$1_H
@@ -230,6 +238,13 @@ ${1:<COMMENT>}`!p snip.rv = format_comment_break(t[1])`
 endsnippet
 
 snippet "(.*)((NOTE)|(IMPORTANT)|(TODO)|(BUG)|(XXX))" "important entry" r!b
-`!p snip.rv = match.group(1) + match.group(2)`(${1:`echo $USER`}): ${2:<MESSAGE>}
+`!p snip.rv = match.group(1) + match.group(2)`(${1:`echo $USER`}): ${2:MESSAGE}
+endsnippet
+
+snippet LOREM "Lorem Ipsum - 50 Words" b
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+no sea takimata sanctus est Lorem ipsum dolor sit amet.
 endsnippet
 
