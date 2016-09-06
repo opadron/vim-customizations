@@ -20,11 +20,13 @@ endsnippet
 snippet SHELF "shell extended branch" !b
 elif [ ${1:<CONDITION>} ] ; then
     ${2:<CODE>}
+
 endsnippet
 
 snippet SHELL "shell default branch" !b
 else
     ${1:<CODE>}
+
 endsnippet
 
 snippet SHOR "shell for loop" !b
@@ -56,6 +58,7 @@ snippet CASH "shell case statement" !b
 ${1:<PATTERN>})
   ${2:<CODE>}
   ;;
+
 endsnippet
 
 snippet SHUN "shell function" !b
@@ -75,13 +78,13 @@ endsnippet
 snippet ELIF "C-style extended branch" !b
 } else if(${1:<CONDITION>}) {
     ${2:<CODE>}
-}
+
 endsnippet
 
 snippet ELSE "C-style default branch" !b
 } else {
     ${1:<CODE>}
-}
+
 endsnippet
 
 snippet FOR "C-style for loop" !b
@@ -148,11 +151,11 @@ endsnippet
 
 snippet IGUARD "C-style multiple inclusion guard" !b
 #ifndef __${1:<HEADER NAME>}_H
-#define __${1}_H
+#define __$1_H
 
 ${2:<CODE>}
 
-#endif /* !__${1}_H */
+#endif /* !__$1_H */
 endsnippet
 
 # html snippets ################################################################
@@ -169,7 +172,16 @@ snippet <img> "img element" !b
 endsnippet
 
 snippet < "generic dom element" !b
-<${1:div}${2:<ATTRIBUTES>}>${3:<CHILDREN>}</${1/(\w+).*/$1/g}>
+<${1:div}`!p snip.rv = ' ' if t[2] else ''`$2`!p if t[3]:
+    snip.rv = '>'
+    snip >> 1
+    snip += ''
+else:
+    snip.rv = ''`$3`!p if t[3]:
+    snip += '</' + t[1] + '>'
+else:
+    snip.rv = '/>'
+`
 endsnippet
 
 # generic snippets #############################################################
